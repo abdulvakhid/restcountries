@@ -17,7 +17,6 @@ return (
         <input onKeyDown={(evt) => {
             if (evt.key === "Enter") {
                 setvalue(evt.target.value);
-                evt.target.value = "";
             }
         }} className="position-relative form-control text-center" type="search" aria-label="Search for a country…" placeholder="Search for a country…"  />
         </div>
