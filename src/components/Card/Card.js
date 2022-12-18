@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
 import "./card.css";
 
 const Card = ({title,img,population,region,capital}) => {
 
 return (
 <li className="flag-item col-3"> 
+    <Link className="text-decoration-none text-dark" to={`/info/${title}`}>
     <div className="item-box">
         <div>
             <img src={img} className="img-fluid card-img"  width="267" height="160" alt="usa flag" />
@@ -17,6 +19,7 @@ return (
             </>
         </div>
     </div>
+    </Link>
  </li>
 );
 };
