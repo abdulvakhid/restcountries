@@ -34,7 +34,7 @@ export const Single = () => {
  <div className="container">
      <div className='mt-5'>
        <div className="mb-5">
-              <button className="btn border" onClick={()=>back(-1)}>
+              <button className="btn border back" onClick={()=>back(-1)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -82,7 +82,7 @@ export const Single = () => {
                     </ul>
 
                     <span><strong>Border Countries: </strong>
-                    {item?.borders?.map(border =>   <span key={border} className="col-2 me-1 p-2 border text-center rounded-4">{border}</span>)}
+                    {item?.borders?.map(border =>   <span key={border} className="col-2 me-1 py-2 px-4 borders text-center rounded-4">{border}</span>)}
                     </span>                      
               </div>
           </div>
