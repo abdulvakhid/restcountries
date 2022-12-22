@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import "./single.css"
+import { useTranslation } from 'react-i18next';
+
 
 export const Single = () => {
     const {id} = useParams()
@@ -10,7 +13,7 @@ export const Single = () => {
       data:[]
     })
   
-  
+    const {t} =useTranslation();
     useEffect(() => {
       fetch(`https://restcountries.com/v3.1/name/${id}`)
         .then(response => response.json())
@@ -31,8 +34,9 @@ export const Single = () => {
         .catch(error => { })
     },[id])
     return (
- <div className="container">
-     <div className='mt-5'>
+ <div className='single-box'>
+  <div className="container">
+     <div className='mt-5 pb-5'>
        <div className="mb-5">
               <button className="btn border back" onClick={()=>back(-1)}>
                 <svg
@@ -45,7 +49,7 @@ export const Single = () => {
                   <path
                     fillRule="evenodd"
                     d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-                </svg>Back
+                </svg>{t("Single.back")}
               </button>
            </div>
            {info.data.map(item =>
@@ -55,39 +59,40 @@ export const Single = () => {
           </div>
           <div className="offset-1 col-6">
               <div className="row">
-                    <h2 className="mb-3">{item.name.common}</h2>
+                    <h2 className="mb-3 s-title">{item.name.common}</h2>
                     <ul className="row list-unstyled">
                     <li className="col-6">
-                            <p>
-                              <strong>Native Name:</strong> <span>{item.name.official}</span>
+                            <p className='s-text'>
+                              <strong className='nativeName'>{t("Single.nativeName")}:</strong> <span>{item.name.official}</span>
                             </p>
-                            <p>
-                          <strong> Population:</strong> <span>{item.population}</span>
+                            <p className='s-text'>
+                          <strong className='population'> {t("Single.population")}:</strong> <span>{item.population}</span>
                             </p>
-                            <p>
-                        <strong>Region:</strong> <span>{item.region}</span>
+                            <p className='s-text'>
+                        <strong className='region'>{t("Single.region")}:</strong> <span>{item.region}</span>
                             </p>
-                          <p><strong>Sub Region:</strong> <span>{item.subregion}</span>
+                          <p className='s-text'><strong className='subRegion'>{t("Single.region")}:</strong> <span>{item.subregion}</span>
                             </p>
-                            <p>
-                        <strong>Capital: </strong><span>{item.capital}</span>
+                            <p className='s-text'>
+                        <strong className='capital'>{t("Single.capital")}: </strong><span>{item.capital}</span>
                             </p>
               
                     </li>
                     <li className="col-6">
-                      <p><strong>Top Level Domain: </strong><span>{item.tld[0]}</span></p>
-                      <p> <strong>Currencies:</strong> <span>{Object.keys(item.currencies)}</span></p>
-                      <p><strong>Languages:</strong> <span>{Object.values(item.languages)+","}</span></p>    
+                      <p className='s-text'><strong className='domen'>{t("Single.domen")}: </strong><span>{item.tld[0]}</span></p>
+                      <p className='s-text'> <strong className='currencies'>{t("Single.currencies")}:</strong> <span>{Object.keys(item.currencies)}</span></p>
+                      <p className='s-text'><strong className='languages'>{t("Single.languages")}:</strong> <span>{Object.values(item.languages)+","}</span></p>    
                     </li>
                     </ul>
 
-                    <span><strong>Border Countries: </strong>
-                    {item?.borders?.map(border =>   <span key={border} className="col-2 me-1 py-2 px-4 borders text-center rounded-4">{border}</span>)}
-                    </span>                      
+                    <ul className='list-unstyled single-list s-text '><strong className='borders'>{t("Single.borders")}: </strong>
+                    {item?.borders?.map(border =>   <li key={border} className="col-2 ms-2 mb-2 py-2 px-4 borders text-center rounded-4">{border}</li>)}
+                    </ul>                      
               </div>
           </div>
         </div>
        )}
      </div>
+ </div>
  </div>
 )}

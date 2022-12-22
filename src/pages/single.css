@@ -1,0 +1,10 @@
+.sinle-box {
+background-color: var(--main-body-bg-color);
+}
+
+.s-title{
+color: var(--main-text-color);
+}
+.s-text{
+    color: var(--main-text-color);
+}

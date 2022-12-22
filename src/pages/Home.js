@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Form from '../components/Form/Form';
 import Card from '../components/Card/Card';
+import { Themecontext } from '../context/Themecontext';
+
+
 export const Home = () => {
+  const {theme} = useContext(Themecontext)
 
     const [data, setData] = useState({
         loading: true,
@@ -17,12 +21,20 @@ export const Home = () => {
             if (value !== "") {
               fetch(`https://restcountries.com/v3.1/name/${value}`)
               .then(res => res.json())
-              .then(data =>  setData({
+              .then(data => { setData({
                 loading: false,
                 data: data,
                 isError: false
+               
               })
-              )
+              if (data.status === 404) {
+                setData({
+                  loading: false,
+                  data: [],
+                  isError: true,
+              })
+              }
+              })
               .catch(err => setData({
                   loading: true,
                   data: [],
@@ -60,7 +72,7 @@ export const Home = () => {
         },[value, valueSelect])
 
   return (
-    <div>
+    <div className={theme}>
         <Form setvalue={setValue} setSelectValue={setValueSelect} />
         <div className="container">
 
@@ -81,10 +93,6 @@ export const Home = () => {
     
   )}
   
-    
-
-   
-
   </div>
     </div>
   )

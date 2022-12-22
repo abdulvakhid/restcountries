@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  background-color: #f2f2f2;
+  color: var(--main-text-color);
+  background-color: var(--main-body-bg-color);
 }
 
 .img-single{
@@ -9,13 +10,22 @@ width: 100%;
 }
 
 .back {
-  background: #FFFFFF;
+  color: var(--main-text-color);
+  background-color: var(--main-body-bg-color);
   box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.293139);
   border-radius: 6px;
 }
 
 .borders {
-  background: #FFFFFF;
+  color: var(--main-text-color);
+  background-color: var(--main-body-bg-color);
   box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.104931);
   border-radius: 2px;
 }
+
+.single-list{
+width: 700px;
+display: flex;
+flex-wrap: wrap;
+}
+
